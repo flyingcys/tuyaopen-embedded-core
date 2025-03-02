@@ -1,0 +1,6 @@
+[submodule "components/cJSON/cJSON"]
+	path = components/cJSON/cJSON
+	url = https://github.com/DaveGamble/cJSON
+[submodule "components/mbedtls/mbedtls"]
+	path = components/mbedtls/mbedtls
+	url = https://github.com/Mbed-TLS/mbedtls
