@@ -145,7 +145,7 @@ int atop_service_activate_request(const tuya_activite_request_t *request, atop_b
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -200,7 +200,7 @@ int atop_service_client_reset(const char *id, const char *key)
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -281,7 +281,7 @@ int atop_service_dynamic_cfg_get_v20(const char *id, const char *key, HTTP_DYNAM
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -338,7 +338,7 @@ int atop_service_upgrade_info_get_v44(const char *id, const char *key, int chann
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -394,7 +394,7 @@ int atop_service_auto_upgrade_info_get_v44(const char *id, const char *key, atop
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -453,7 +453,7 @@ int atop_service_upgrade_status_update_v41(const char *id, const char *key, int 
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -521,7 +521,7 @@ int atop_service_version_update_v41(const char *id, const char *key, const char 
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -589,7 +589,7 @@ int atop_service_put_rst_log_v10(const char *id, const char *key, const char *rs
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -659,7 +659,7 @@ int atop_service_outdoors_property_upload(const char *id, const char *key, const
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -729,7 +729,7 @@ int atop_service_iccid_upload(const char *id, const char *key, const char *iccid
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -795,7 +795,7 @@ int atop_service_sync_check(const char *id, const char *key, DEV_SYNC_STATUS_E *
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -875,7 +875,7 @@ int atop_service_cache_dp_get(const char *id, const char *key, const char *req_d
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
     if (OPRT_OK != rt) {
         PR_ERR("atop_base_request error:%d", rt);
         return rt;
@@ -928,7 +928,7 @@ int atop_service_comm_node_enable(const char *id, const char *key)
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -989,7 +989,7 @@ int atop_service_comm_node_disable(const char *id, const char *key)
 
     /* ATOP service request send */
     rt = atop_base_request(&atop_request, &response);
-    tal_free(buffer);
+    tal_free((void *)buffer);
 
     bool success = response.success;
     atop_base_response_free(&response);
@@ -1070,7 +1070,7 @@ int atop_service_comm_post_simple(const char *api, const char *version, const ch
     atop_base_response_t response = {0};
     rt = atop_base_request(&atop_request, &response);
     if (buffer) {
-        tal_free(buffer);
+        tal_free((void *)buffer);
     }
 
     bool success = response.success;

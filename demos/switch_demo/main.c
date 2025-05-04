@@ -12,7 +12,7 @@
 #include "netmgr.h"
 
 #include "tuya_iot.h"
-
+#include "tuya_iot_dp.h"
 
 /* Tuya device handle */
 tuya_iot_client_t client;

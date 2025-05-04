@@ -78,7 +78,7 @@ static int iotdns_response_decode(const uint8_t *input, size_t ilen, tuya_endpoi
     // base64 decode
     if (mbedtls_base64_decode(caArr_raw, buffer_len, &caArr_raw_len, (const uint8_t *)caArr0, caArr0_len) != 0) {
         PR_ERR("base64 decode error");
-        tal_free(caArr_raw);
+        tal_free((void *)caArr_raw);
         cJSON_Delete(root);
         return OPRT_COM_ERROR;
     }
@@ -201,7 +201,7 @@ int iotdns_cloud_endpoint_get(const char *region, const char *env, tuya_endpoint
         &http_response);
 
     /* Release http buffer */
-    tal_free(body_buffer);
+    tal_free((void *)body_buffer);
 
     if (HTTP_CLIENT_SUCCESS != http_status) {
         PR_ERR("http_request_send error:%d", http_status);
@@ -290,7 +290,7 @@ int tuya_iotdns_query_host_certs(char *host, uint16_t port, uint8_t **cacert, ui
     http_client_response_t http_response;
 
     int rt = iotdns_base_request(body_buffer, "/device/dns_query", &http_response);
-    tal_free(body_buffer);
+    tal_free((void *)body_buffer);
     if (OPRT_OK == rt) {
         rt = iotdns_query_domain_certs_parser(http_response.body, cacert, cacert_len);
         http_client_free(&http_response);
@@ -345,7 +345,7 @@ int tuya_iotdns_query_domain_certs(char *url, uint8_t **cacert, uint16_t *cacert
 
     int rt = tuya_iotdns_query_host_certs(p_host, port, cacert, cacert_len);
 
-    tal_free(p_tmp_url);
+    tal_free((void *)p_tmp_url);
 
     return rt;
 }
